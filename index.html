@@ -3,215 +3,226 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>⚡ Quantum VPN - ආරක්ෂිත ප්‍රවේශය</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <title>Quantum VPN - ආරක්ෂිත ප්‍රවේශ ගේට්ටුව</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
     <style>
-        /* මූලික මෝස්තරය (Styling) */
+        /* මූලික විලාසයන් (Base Styles) */
         :root {
-            --primary-color: #007bff; /* නිල් (Blue) */
-            --secondary-color: #28a745; /* කොළ (Green) */
-            --background-color: #121212; /* තද අළු (Dark Grey) */
-            --text-color: #f0f0f0; /* ලා අළු */
-            --card-bg: #1e1e1e;
+            --primary-color: #00bcd4; /* Aqua Blue */
+            --secondary-color: #ff9800; /* Orange */
+            --background-dark: #0f172a; /* Dark Blue Slate */
+            --background-light: #1e293b;
+            --text-color: #e2e8f0;
+            --code-bg: #111827;
         }
 
         body {
             font-family: 'Poppins', sans-serif;
-            background-color: var(--background-color);
+            background-color: var(--background-dark);
             color: var(--text-color);
             margin: 0;
             padding: 0;
-            line-height: 1.6;
-            overflow-x: hidden; /* තිරයෙන් පිටත අන්තර්ගතය සැඟවීම */
+            line-height: 1.7;
+            overflow-x: hidden;
         }
 
-        /* Hero Section Animation */
-        .hero {
-            background: linear-gradient(135deg, #1f4068, #162447);
-            padding: 100px 20px;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.2);
-            backdrop-filter: blur(2px);
-            z-index: 1;
-        }
-
-        .hero-content {
-            position: relative;
-            z-index: 2;
-        }
-
-        .hero h1 {
-            font-size: 3em;
-            margin-bottom: 10px;
-            color: #ffffff;
-            animation: fadeInDown 1.5s ease-out; /* සරල Animation */
-        }
-
-        .hero p {
-            font-size: 1.2em;
-            margin-bottom: 30px;
-            color: #ccc;
-            animation: fadeInUp 1.5s ease-out 0.3s forwards;
-            opacity: 0;
-        }
-
-        /* Keyframes for Animation */
-        @keyframes fadeInDown {
-            from { opacity: 0; transform: translateY(-30px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(30px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        /* Content Section */
         .container {
             max-width: 1200px;
-            margin: 40px auto;
-            padding: 0 20px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        /* Header / Hero Section Styling */
+        .hero-header {
+            background: linear-gradient(135deg, var(--background-dark) 0%, #1e293b 100%);
+            padding: 120px 20px;
+            text-align: center;
+            border-bottom: 2px solid var(--primary-color);
+            position: relative;
+        }
+
+        .hero-header h1 {
+            font-size: 3.5em;
+            color: white;
+            margin-bottom: 10px;
+            letter-spacing: 1px;
+            /* Simple Animation */
+            animation: pulse-title 2s infinite alternate;
+        }
+
+        .hero-header p {
+            font-size: 1.3em;
+            color: var(--primary-color);
+            font-weight: 300;
+            animation: fadeIn 1.5s ease-out;
+        }
+        
+        @keyframes pulse-title {
+            from { text-shadow: 0 0 5px rgba(0, 188, 212, 0.4); }
+            to { text-shadow: 0 0 15px rgba(0, 188, 212, 0.8); }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        /* Downloads Grid */
+        .section-title {
+            text-align: center;
+            color: white;
+            font-size: 2.2em;
+            margin-bottom: 50px;
+            border-bottom: 3px solid var(--secondary-color);
+            display: inline-block;
+            padding-bottom: 5px;
+            margin-left: auto;
+            margin-right: auto;
+            display: block;
         }
 
         .downloads-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 40px;
         }
 
         /* Card Styling */
         .download-card {
-            background-color: var(--card-bg);
-            padding: 25px;
-            border-radius: 10px;
-            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            border-left: 5px solid var(--primary-color);
+            background-color: var(--background-light);
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5);
+            transition: transform 0.4s ease-in-out, box-shadow 0.4s ease-in-out;
+            border: 1px solid rgba(255, 255, 255, 0.1);
         }
 
         .download-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 15px 35px rgba(0, 188, 212, 0.3);
         }
 
         .download-card h3 {
-            color: var(--primary-color);
-            border-bottom: 2px solid #333;
-            padding-bottom: 10px;
+            color: var(--secondary-color);
+            font-size: 1.5em;
+            border-bottom: 1px solid #334155;
+            padding-bottom: 15px;
+            margin-top: 0;
         }
 
         /* Button Styling */
         .btn {
-            display: inline-block;
-            padding: 10px 20px;
-            margin-top: 15px;
-            border-radius: 5px;
+            display: block;
+            width: 100%;
+            padding: 12px 20px;
+            margin-top: 25px;
+            border-radius: 8px;
             text-decoration: none;
-            font-weight: 600;
-            transition: background-color 0.3s ease;
+            font-weight: 700;
             text-align: center;
+            transition: background-color 0.3s ease;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
         }
 
         .btn-download {
-            background-color: var(--secondary-color);
-            color: white;
+            background-color: var(--primary-color);
+            color: var(--background-dark);
+            border: none;
         }
 
         .btn-download:hover {
-            background-color: #1e7e34;
+            background-color: #00a4b7;
         }
 
+        /* Code Area Styling */
         .code-area {
-            background-color: #000000;
-            color: #00ff41; /* Neo Green */
-            padding: 15px;
-            border-radius: 5px;
-            margin-top: 15px;
+            background-color: var(--code-bg);
+            color: #4ade80; /* Light Green for code */
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 20px;
             font-family: monospace;
-            white-space: pre-wrap; /* කේතය අවශ්‍ය පරිදි එතීම */
+            white-space: pre-wrap;
             overflow-x: auto;
             position: relative;
+            border-left: 5px solid var(--secondary-color);
         }
 
         /* Copy Button */
         .copy-btn {
             position: absolute;
-            top: 5px;
-            right: 5px;
-            padding: 5px 10px;
-            background-color: var(--primary-color);
+            top: 10px;
+            right: 10px;
+            padding: 8px 15px;
+            background-color: var(--secondary-color);
             color: white;
             border: none;
-            border-radius: 3px;
+            border-radius: 5px;
             cursor: pointer;
-            font-size: 0.8em;
-            transition: background-color 0.3s;
+            font-size: 0.9em;
+            font-weight: 600;
+            transition: background-color 0.3s, transform 0.2s;
         }
 
         .copy-btn:hover {
-            background-color: #0056b3;
+            background-color: #e68a00;
+            transform: scale(1.05);
         }
 
         /* Footer */
         footer {
             text-align: center;
-            padding: 20px;
-            margin-top: 50px;
-            border-top: 1px solid #333;
-            color: #888;
+            padding: 30px;
+            margin-top: 60px;
+            border-top: 1px solid #334155;
+            color: #94a3b8;
+            font-size: 0.9em;
         }
     </style>
 </head>
 <body>
 
-    <header class="hero">
-        <div class="hero-content">
-            <h1>🛡️ Quantum VPN Network</h1>
-            <p>වේගවත්, ආරක්ෂිත, සහ නිර්නාමික අන්තර්ජාල ප්‍රවේශය.</p>
+    <header class="hero-header">
+        <div data-aos="zoom-in" data-aos-duration="1000">
+            <h1>🌐 Quantum VPN Access Gateway</h1>
+            <p>ඔබගේ අන්තර්ජාලය සංකේතනය කර, ආරක්ෂිතව සහ වේගවත්ව සම්බන්ධ වන්න.</p>
         </div>
     </header>
 
     <div class="container">
-        <h2>🔗 ඔබගේ ප්‍රවේශ ගොනු සහ කේත</h2>
-        <p>ඔබගේ VPN මෘදුකාංගයට අවශ්‍ය ගොනු සහ පිහිටුවීමේ කේත පහතින් ලබා ගන්න.</p>
+        
+        <h2 class="section-title" data-aos="fade-up">🔗 අවශ්‍ය ගොනු සහ කේතයන්</h2>
 
         <div class="downloads-grid">
 
-            <div class="download-card">
-                <h3>🌍 OpenVPN වින්‍යාස ගොනුව</h3>
-                <p>ඔබගේ OpenVPN, WireGuard හෝ වෙනත් මෘදුකාංග සඳහා වන වින්‍යාස ගොනුව (.ovpn, .conf) මෙතැනින් බාගත කරන්න.</p>
+            <div class="download-card" data-aos="fade-right" data-aos-delay="200">
+                <h3>💾 වින්‍යාස ගොනුව බාගත කරන්න</h3>
+                <p>ඔබගේ OpenVPN හෝ WireGuard මෘදුකාංග සඳහා වන වින්‍යාස ගොනුව (.ovpn, .conf, හෝ .zip) මෙතැනින් ලබා ගන්න. මෙය පිහිටුවීම සඳහා අත්‍යවශ්‍ය වේ.</p>
                 
-                <a href="files/my_vpn_config.ovpn" download="Quantum_VPN_Config.ovpn" class="btn btn-download">
-                    📥 ගොනුව බාගත කරන්න
+                <a href="vpn-site/files/my_vpn_config.ovpn" download="Quantum_VPN_Config.ovpn" class="btn btn-download">
+                    📥 VPN ගොනුව බාගත කරන්න
                 </a>
                 
-                <p style="margin-top: 10px; font-size: 0.9em; color: var(--primary-color);">ගොනු නාමය: Quantum_VPN_Config.ovpn</p>
+                <p style="margin-top: 20px; font-size: 0.9em; color: var(--secondary-color);">ගොනු වර්ගය: .ovpn | ප්‍රමාණය: 2KB</p>
             </div>
 
-            <div class="download-card">
-                <h3>🔑 VPN පිහිටුවීමේ කේතය</h3>
-                <p>සමහර VPN සේවාදායකයන් සඳහා අවශ්‍ය වන විශේෂ ප්‍රවේශ යතුර (Access Key) හෝ කේතය මෙතැනින් පිටපත් කර ගන්න.</p>
+            <div class="download-card" data-aos="fade-left" data-aos-delay="400">
+                <h3>🔑 ප්‍රවේශ කේතය පිටපත් කරන්න</h3>
+                <p>සමහර ජංගම යෙදුම්වලට හෝ උසස් පිහිටුවීම් සඳහා අවශ්‍ය වන ප්‍රවේශ යතුර (Private Key) පහතින් බලන්න. එය පිටපත් කර ඔබේ යෙදුමට ඇලවීම (Paste) කරන්න.</p>
 
                 <div class="code-area">
                     <pre id="vpnCode">
+# WireGuard Configuration Snippet
 [Interface]
-PrivateKey = xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+PrivateKey = A47xRkI0eY9tZfS1jU8pD2vL6oN3mQ4cV5bH6gJ7kM
 Address = 10.0.0.2/24
 
 [Peer]
-PublicKey = yyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy
-Endpoint = vpn.quantum.lk:51820
+PublicKey = B56ySlJ1fX8uEgA2kL7qP9zM4oN5cW6dI7hK8jL9
+Endpoint = server.quantum-vpn.lk:51820
 AllowedIPs = 0.0.0.0/0
                     </pre>
                     
@@ -219,24 +230,40 @@ AllowedIPs = 0.0.0.0/0
                 </div>
             </div>
 
-        </div> </div> <footer>
-        <p>&copy; 2024 Quantum VPN. සියලුම හිමිකම් ඇවිරිණි. | ආරක්ෂිතව සම්බන්ධ වන්න.</p>
+        </div> <div style="text-align: center; margin-top: 80px;" data-aos="fade-up">
+            <h3 style="color: var(--primary-color);">දෝෂ ඇත්නම් ගොනුව යලි උඩුගත කරන්න</h3>
+            <p>තාක්ෂණික ගැටලු ඇත්නම්, ඔබගේ යාවත්කාලීන කළ VPN ගොනුව මෙතැනින් උඩුගත කරන්න.</p>
+            <a href="vpn-site/upload_handler.php" class="btn" style="width: 250px; background-color: #334155; color: white;">ගොනු උඩුගත කිරීමේ පිටුව</a>
+        </div>
+
+
+    </div> <footer>
+        <p>&copy; 2024 Quantum VPN. සියලුම හිමිකම් ඇවිරිණි. | ⚡ ආරක්ෂාව අපගේ ප්‍රමුඛතාවයයි.</p>
     </footer>
 
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
+        // AOS ආරම්භ කිරීම
+        AOS.init({
+            once: true // Animation එකක් එක් වරක් පමණක් පෙන්වීමට
+        });
+        
+        // Copy Functionality JavaScript
         function copyCode() {
             const codeElement = document.getElementById("vpnCode");
-            const codeToCopy = codeElement.innerText;
+            // codeElement එක තුළ ඇති අන්තර්ගතය, හිස්තැන් සහිතව ගනී
+            const codeToCopy = codeElement.innerText.trim(); 
             
-            // Clipboard API භාවිතයෙන් පිටපත් කිරීම
             navigator.clipboard.writeText(codeToCopy).then(() => {
-                // බොත්තමේ පණිවිඩය වෙනස් කිරීම
                 const copyButton = document.querySelector('.copy-btn');
-                copyButton.innerText = '✅ පිටපත් කළා!';
+                const originalText = copyButton.innerText;
                 
-                // තත්පර 2කට පසු යළි සකස් කිරීම
+                copyButton.innerText = '✅ පිටපත් කළා!';
+                copyButton.style.backgroundColor = '#28a745'; // කොළ පාට
+
                 setTimeout(() => {
-                    copyButton.innerText = 'පිටපත් කරන්න';
+                    copyButton.innerText = originalText;
+                    copyButton.style.backgroundColor = 'var(--secondary-color)';
                 }, 2000);
             }).catch(err => {
                 console.error('Copy failed: ', err);
