@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="si">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>⚡ Quantum VPN - ආරක්ෂිත ප්‍රවේශය</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* මූලික මෝස්තරය (Styling) */
+        :root {
+            --primary-color: #007bff; /* නිල් (Blue) */
+            --secondary-color: #28a745; /* කොළ (Green) */
+            --background-color: #121212; /* තද අළු (Dark Grey) */
+            --text-color: #f0f0f0; /* ලා අළු */
+            --card-bg: #1e1e1e;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--background-color);
+            color: var(--text-color);
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+            overflow-x: hidden; /* තිරයෙන් පිටත අන්තර්ගතය සැඟවීම */
+        }
+
+        /* Hero Section Animation */
+        .hero {
+            background: linear-gradient(135deg, #1f4068, #162447);
+            padding: 100px 20px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.2);
+            backdrop-filter: blur(2px);
+            z-index: 1;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero h1 {
+            font-size: 3em;
+            margin-bottom: 10px;
+            color: #ffffff;
+            animation: fadeInDown 1.5s ease-out; /* සරල Animation */
+        }
+
+        .hero p {
+            font-size: 1.2em;
+            margin-bottom: 30px;
+            color: #ccc;
+            animation: fadeInUp 1.5s ease-out 0.3s forwards;
+            opacity: 0;
+        }
+
+        /* Keyframes for Animation */
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Content Section */
+        .container {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        .downloads-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        /* Card Styling */
+        .download-card {
+            background-color: var(--card-bg);
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border-left: 5px solid var(--primary-color);
+        }
+
+        .download-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+        }
+
+        .download-card h3 {
+            color: var(--primary-color);
+            border-bottom: 2px solid #333;
+            padding-bottom: 10px;
+        }
+
+        /* Button Styling */
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            margin-top: 15px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: background-color 0.3s ease;
+            text-align: center;
+        }
+
+        .btn-download {
+            background-color: var(--secondary-color);
+            color: white;
+        }
+
+        .btn-download:hover {
+            background-color: #1e7e34;
+        }
+
+        .code-area {
+            background-color: #000000;
+            color: #00ff41; /* Neo Green */
+            padding: 15px;
+            border-radius: 5px;
+            margin-top: 15px;
+            font-family: monospace;
+            white-space: pre-wrap; /* කේතය අවශ්‍ය පරිදි එතීම */
+            overflow-x: auto;
+            position: relative;
+        }
+
+        /* Copy Button */
+        .copy-btn {
+            position: absolute;
+            top: 5px;
+            right: 5px;
+            padding: 5px 10px;
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+            font-size: 0.8em;
+            transition: background-color 0.3s;
+        }
+
+        .copy-btn:hover {
+            background-color: #0056b3;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 20px;
+            margin-top: 50px;
+            border-top: 1px solid #333;
+            color: #888;
+        }
+    </style>
+</head>
+<body>
+
+    <header class="hero">
+        <div class="hero-content">
+            <h1>🛡️ Quantum VPN Network</h1>
+            <p>වේගවත්, ආරක්ෂිත, සහ නිර්නාමික අන්තර්ජාල ප්‍රවේශය.</p>
+        </div>
+    </header>
+
+    <div class="container">
+        <h2>🔗 ඔබගේ ප්‍රවේශ ගොනු සහ කේත</h2>
+        <p>ඔබගේ VPN මෘදුකාංගයට අවශ්‍ය ගොනු සහ පිහිටුවීමේ කේත පහතින් ලබා ගන්න.</p>
+
+        <div class="downloads-grid">
+
+            <div class="download-card">
+                <h3>🌍 OpenVPN වින්‍යාස ගොනුව</h3>
+                <p>ඔබගේ OpenVPN, WireGuard හෝ වෙනත් මෘදුකාංග සඳහා වන වින්‍යාස ගොනුව (.ovpn, .conf) මෙතැනින් බාගත කරන්න.</p>
+                
+                <a href="files/my_vpn_config.ovpn" download="Quantum_VPN_Config.ovpn" class="btn btn-download">
+                    📥 ගොනුව බාගත කරන්න
+                </a>
+                
+                <p style="margin-top: 10px; font-size: 0.9em; color: var(--primary-color);">ගොනු නාමය: Quantum_VPN_Config.ovpn</p>
+            </div>
+
+            <div class="download-card">
+                <h3>🔑 VPN පිහිටුවීමේ කේතය</h3>
+                <p>සමහර VPN සේවාදායකයන් සඳහා අවශ්‍ය වන විශේෂ ප්‍රවේශ යතුර (Access Key) හෝ කේතය මෙතැනින් පිටපත් කර ගන්න.</p>
+
+                <div class="code-area">
+                    <pre id="vpnCode">
+[Interface]
+PrivateKey = xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+Address = 10.0.0.2/24
+
+[Peer]
+PublicKey = yyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy
+Endpoint = vpn.quantum.lk:51820
+AllowedIPs = 0.0.0.0/0
+                    </pre>
+                    
+                    <button class="copy-btn" onclick="copyCode()">පිටපත් කරන්න</button>
+                </div>
+            </div>
+
+        </div> </div> <footer>
+        <p>&copy; 2024 Quantum VPN. සියලුම හිමිකම් ඇවිරිණි. | ආරක්ෂිතව සම්බන්ධ වන්න.</p>
+    </footer>
+
+    <script>
+        function copyCode() {
+            const codeElement = document.getElementById("vpnCode");
+            const codeToCopy = codeElement.innerText;
+            
+            // Clipboard API භාවිතයෙන් පිටපත් කිරීම
+            navigator.clipboard.writeText(codeToCopy).then(() => {
+                // බොත්තමේ පණිවිඩය වෙනස් කිරීම
+                const copyButton = document.querySelector('.copy-btn');
+                copyButton.innerText = '✅ පිටපත් කළා!';
+                
+                // තත්පර 2කට පසු යළි සකස් කිරීම
+                setTimeout(() => {
+                    copyButton.innerText = 'පිටපත් කරන්න';
+                }, 2000);
+            }).catch(err => {
+                console.error('Copy failed: ', err);
+                alert('පිටපත් කිරීම අසාර්ථකයි. කේතය අතින් තෝරා පිටපත් කරන්න.');
+            });
+        }
+    </script>
+
+</body>
+</html>
